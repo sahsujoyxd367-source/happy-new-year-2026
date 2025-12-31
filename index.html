@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nini — A Protected Wish | 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    background:
+      radial-gradient(circle at top, rgba(120,150,255,.25), transparent 45%),
+      linear-gradient(#02030a,#050822,#02030a);
+    color:#f2f4ff;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+/* BACKGROUND LAYERS */
+.stars,.fog,.sparks,.rain{position:fixed;inset:0;pointer-events:none;z-index:-1}
+.star{position:absolute;width:2px;height:2px;background:white;opacity:.8;animation:twinkle 3s infinite}
+@keyframes twinkle{50%{opacity:.2}}
+
+.fog{background:radial-gradient(circle at center,rgba(180,200,255,.12),transparent 70%);animation:fogmove 25s linear infinite}
+@keyframes fogmove{from{transform:translateX(-25%)}to{transform:translateX(25%)}}
+
+.spark{position:absolute;width:2px;height:2px;background:#cfe3ff;border-radius:50%;animation:rise linear infinite}
+@keyframes rise{from{transform:translateY(100vh)}to{transform:translateY(-120vh)}}
+
+.rain-drop{position:absolute;width:1px;height:20px;background:rgba(200,220,255,.4);animation:rain linear infinite}
+@keyframes rain{to{transform:translateY(120vh)}}
+
+/* WAND */
+.wand{position:fixed;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle,#fff,#8fbaff);box-shadow:0 0 22px rgba(160,210,255,.95);pointer-events:none;z-index:1000}
+
+/* INTRO */
+.intro{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px}
+.intro h1{font-family:'Cinzel',serif;font-size:4.2em;letter-spacing:2px;text-shadow:0 0 40px rgba(180,220,255,.7)}
+.intro p{margin-top:24px;font-size:1.25em;opacity:.85;max-width:850px}
+
+/* SCROLL TEXT */
+.scroll{padding:140px 20px;max-width:1100px;margin:auto;font-size:1.15em;line-height:2;opacity:.92}
+.scroll strong{font-family:'Cinzel',serif;font-size:1.25em}
+.scroll span{display:block;margin-bottom:24px;opacity:0;transform:translateY(30px);transition:1.5s}
+.scroll span.visible{opacity:1;transform:none}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:55px;margin-top:140px}
+.card{height:370px;perspective:1800px}
+.inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 2.2s cubic-bezier(.2,.1,.1,1)}
+.card.active .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:24px;overflow:hidden;backface-visibility:hidden}
+.front img{width:100%;height:100%;object-fit:cover;filter:brightness(.8)}
+.back{transform:rotateY(180deg);background:linear-gradient(135deg,#f6ecd0,#dbc89c);color:#2c220b;padding:40px;font-family:'Cinzel',serif;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:inset 0 0 70px rgba(255,255,255,.65)}
+
+/* CHARACTERS */
+.characters{margin:160px auto;max-width:1400px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:70px}
+.character{background:rgba(255,255,255,.06);border-radius:26px;padding:45px;text-align:center;box-shadow:0 0 50px rgba(160,200,255,.25)}
+.character img{width:170px;height:170px;border-radius:50%;object-fit:cover;margin-bottom:22px;box-shadow:0 0 30px rgba(180,220,255,.6)}
+.character h3{font-family:'Cinzel',serif;font-size:1.7em;margin-bottom:14px}
+.character p{opacity:.9;line-height:1.8}
+
+footer{text-align:center;padding:70px 20px;font-family:'Cinzel',serif;opacity:.7}
+</style>
+</head>
+
+<body>
+<div class="stars" id="stars"></div>
+<div class="fog"></div>
+<div class="sparks" id="sparks"></div>
+<div class="wand" id="wand"></div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div>
+    <h1>Happy New Year — 2026</h1>
+    <p style="max-width:800px">
+      And before anything else is said, before the world rushes forward again —
+      I want this moment to pause right here, just for you, Nini.
+      This new year begins with your name, your warmth, and the quiet promise that you are never alone.
+    </p>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="scroll" id="letter">
+<span><strong>My Dearest Nini,</strong></span>
+<span>This page exists because you do. Because somewhere in this vast, unpredictable world, there is you — and that alone makes everything softer.</span>
+<span>As 2026 begins, I want you to feel protected in a way that words rarely manage. Like ancient magic wrapped quietly around your heart, asking nothing, expecting nothing — only wishing you peace.</span>
+<span>If life ever feels heavy, remember this: someone cared enough to build a universe just to hold your name. Someone chose patience over noise, depth over ease, and you over everything else.</span>
+<span>I will never promise perfection. What I promise is presence — steady, loyal, and real. The kind that stays even when the world looks away.</span>
+<span>You are cherished. You are guarded. And no matter where time carries us, this place will always remember you exactly as you are.</span>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini1.jpeg"></div><div class="face back">This year begins with your smile.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini2.jpeg"></div><div class="face back">You are the reason this magic exists.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini3.jpeg"></div><div class="face back">Every moment with you feels protected.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini4.jpeg"></div><div class="face back">Your presence softens the world.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini5.jpeg"></div><div class="face back">You deserve peace, always.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini6.jpeg"></div><div class="face back">Some connections are written in magic.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini7.jpeg"></div><div class="face back">I choose you, in every timeline.</div></div></div>
+  <div class="card" onclick="flip(this)"><div class="inner"><div class="face front"><img src="images/nini8.jpeg"></div><div class="face back">This year will be gentle with you.</div></div></div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="characters">
+  <div class="character">
+    <img src="images\harry potter.jpg">
+    <h3>Harry Potter</h3>
+    <p>"You are protected by courage and a love stronger than fear."</p>
+  </div>
+  <div class="character">
+    <img src="images\hermione.jpg">
+    <h3>Hermione Granger</h3>
+    <p>"You are valued deeply, and knowledge will always guide you safely."</p>
+  </div>
+  <div class="character">
+    <img src="images\ron.jpg">
+    <h3>Ron Weasley</h3>
+    <p>"You never walk alone — loyalty stands beside you."</p>
+  </div>
+  <div class="character">
+    <img src="images\hina.jpg">
+    <h3>Hina Amano</h3>
+    <p>"Even the sky bends gently for those who love purely."</p>
+  </div>
+  <div class="character">
+    <img src="images\hodaka.jpg">
+    <h3>Hodaka Morishima</h3>
+    <p>"I would run through any storm to keep you safe."</p>
+  </div>
+</section>
+
+<footer>
+✦ Watched by magic • Written with care • 2026 ✦
+</footer>
+
+<script>
+function flip(card){
+  card.classList.toggle('active');
+  const audio=new Audio('spell.mp3');audio.volume=.4;audio.play();
+}
+
+/* STARS */
+const stars=document.getElementById('stars');
+for(let i=0;i<140;i++){let s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';stars.appendChild(s)}
+
+/* SPARKS */
+const sparks=document.getElementById('sparks');
+for(let i=0;i<180;i++){let sp=document.createElement('div');sp.className='spark';sp.style.left=Math.random()*100+'vw';sp.style.animationDuration=6+Math.random()*8+'s';sparks.appendChild(sp)}
+
+/* RAIN (Weathering With You) */
+const rain=document.createElement('div');rain.className='rain';document.body.appendChild(rain);
+for(let i=0;i<160;i++){let r=document.createElement('div');r.className='rain-drop';r.style.left=Math.random()*100+'vw';r.style.animationDuration=1+Math.random()*1.5+'s';rain.appendChild(r)}
+
+/* WAND */
+const wand=document.getElementById('wand');
+window.addEventListener('mousemove',e=>{wand.style.left=e.clientX+'px';wand.style.top=e.clientY+'px'})
+
+/* SCROLL REVEAL */
+const spans=document.querySelectorAll('#letter span');
+window.addEventListener('scroll',()=>{
+  spans.forEach(s=>{
+    const rect=s.getBoundingClientRect();
+    if(rect.top<window.innerHeight-100){s.classList.add('visible')}
+  })
+});
+</script>
+</body>
+</html>
